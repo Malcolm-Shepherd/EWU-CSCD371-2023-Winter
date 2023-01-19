@@ -4,12 +4,8 @@ using System.IO;
 namespace Logger.Tests
 {
     [TestClass]
-    public class LogFactoryTests : BaseLogger
+    public class LogFactoryTests
     {
-        public override void Log(LogLevel logLevel, string message)
-        {
-            throw new System.NotImplementedException();
-        }
 
         [TestMethod]
         public void Set_ClassName_InBaseLogger()
