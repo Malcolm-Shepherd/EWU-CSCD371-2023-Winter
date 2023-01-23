@@ -12,6 +12,7 @@ namespace Logger
             string path = "Log.txt";
             using (StreamWriter sw = File.AppendText(path))
             {
+                message += " - " + DateTime.Now.ToString() + " " + Name + " " + logLevel.ToString();
                 sw.WriteLine(message);
             }
             // File.WriteAllText(path, message);   

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Logger.Tests
 {
