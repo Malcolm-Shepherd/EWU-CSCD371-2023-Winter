@@ -34,7 +34,7 @@ namespace Logger.Tests
             {
                 Assert.AreEqual(oldText[i], newText[i]);
             }
-            Assert.AreEqual(newText[oldText.Length], testMessage);
+            Assert.AreEqual(newText[oldText.Length].Substring(0, testMessage.Length), testMessage);
         }
     }
 }

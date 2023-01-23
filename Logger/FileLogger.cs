@@ -10,11 +10,11 @@ namespace Logger
         public override void Log(LogLevel logLevel, string message)
         {
             string path = "Log.txt";
-            if (!File.Exists(path)) 
+            using (StreamWriter sw = File.AppendText(path))
             {
-                File.WriteAllText(path, message);   
+                sw.WriteLine(message);
             }
-            File.AppendAllText(path, "\n" + message);
+            // File.WriteAllText(path, message);   
             /*using (StreamWriter fileAppender = File.AppendText(path))
             {
                 fileAppender.WriteLine(message);
