@@ -3,15 +3,15 @@
     public class LogFactory 
     {
 
-        private string path = null;
+        private string path = string.Empty;
 
-        public FileLogger CreateLogger(string className)
+        public FileLogger? CreateLogger(string className)
         {
             BaseLogger logger = new FileLogger();
             BaseLogger.Name = className;
             BaseLogger.Path = path;
 
-            if (BaseLogger.Path == null) return null;
+            if (BaseLogger.Path == string.Empty) return null;
             else return (FileLogger) logger;
         }
 
