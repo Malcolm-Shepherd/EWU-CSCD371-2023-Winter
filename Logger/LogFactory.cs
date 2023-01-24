@@ -1,23 +1,21 @@
 ﻿namespace Logger
 {
-    public class LogFactory : BaseLogger
+    public class LogFactory 
     {
 
-        private string path;
+        private string path = null;
 
-        public BaseLogger CreateLogger(string className, string inputPath)
+        public FileLogger CreateLogger(string className)
         {
-            Name = className;
-            ConfigureFileLogger(inputPath);
-            return null;
+            BaseLogger logger = new FileLogger();
+            BaseLogger.Name = className;
+            BaseLogger.Path = path;
+
+            if (BaseLogger.Path == null) return null;
+            else return (FileLogger) logger;
         }
 
-        public override void Log(LogLevel logLevel, string message)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        private void ConfigureFileLogger(string inputPath)
+        public void ConfigureFileLogger(string inputPath)
         {
             path = inputPath;
         }
