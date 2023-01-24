@@ -8,5 +8,6 @@ namespace Logger
         public  static string Name { get; set; } = string.Empty;
         public static string Path { get; set; } = string.Empty;
         public abstract void Log(LogLevel logLevel, string message);
+        public string[] LoggedMessages { get; set; } = new string[0];
     }
 }

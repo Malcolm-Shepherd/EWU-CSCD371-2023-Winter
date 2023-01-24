@@ -22,6 +22,20 @@ namespace Logger.Tests
         }
 
         [TestMethod]
+        public void Set_ClassName_WithNameOf()
+        {
+
+            // Arrange
+            LogFactory factory = new LogFactory();
+
+            // Act
+            BaseLogger logger = factory.CreateLogger(nameof(this.Set_ClassName_WithNameOf));
+
+            // Assert
+            Assert.AreEqual("Set_ClassName_WithNameOf", BaseLogger.Name);
+        }
+
+        [TestMethod]
         public void Set_FilePath_InConfigureFileLogger()
         {
             // Arrange

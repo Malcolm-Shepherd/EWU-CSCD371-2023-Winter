@@ -1,18 +1,20 @@
-﻿namespace Logger
+﻿using System.Runtime.InteropServices.ComTypes;
+
+namespace Logger
 {
     public class LogFactory 
     {
 
         private string path = string.Empty;
 
-        public FileLogger? CreateLogger(string className)
+        public BaseLogger? CreateLogger(string nameToPass)
         {
-            BaseLogger logger = new FileLogger();
-            BaseLogger.Name = className;
+            BaseLogger.Name = nameToPass;
+            BaseLogger logger = new FileLogger();                
             BaseLogger.Path = path;
 
             if (BaseLogger.Path == string.Empty) return null;
-            else return (FileLogger) logger;
+            else return logger;
         }
 
         public void ConfigureFileLogger(string inputPath)
