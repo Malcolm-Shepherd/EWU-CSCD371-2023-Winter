@@ -1,65 +1,10 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
 
-namespace Logger.Tests
+namespace Logger.Tests;
+
+[TestClass]
+public class LogFactoryTests
 {
-    [TestClass]
-    public class LogFactoryTests
-    {
-
-        [TestMethod]
-        public void Set_ClassName_InBaseLogger()
-        {
-
-            // Arrange
-            LogFactory factory = new LogFactory();
-
-            // Act
-            BaseLogger logger = factory.CreateLogger("Test Name");
-
-            // Assert
-            Assert.AreEqual("Test Name", BaseLogger.Name);
-        }
-
-        [TestMethod]
-        public void Set_ClassName_WithNameOf()
-        {
-
-            // Arrange
-            LogFactory factory = new LogFactory();
-
-            // Act
-            BaseLogger logger = factory.CreateLogger(nameof(this.Set_ClassName_WithNameOf));
-
-            // Assert
-            Assert.AreEqual("Set_ClassName_WithNameOf", BaseLogger.Name);
-        }
-
-        [TestMethod]
-        public void Set_FilePath_InConfigureFileLogger()
-        {
-            // Arrange
-            LogFactory factory = new LogFactory();
-
-            // Act
-            factory.ConfigureFileLogger("Logger.txt");
-            BaseLogger logger = factory.CreateLogger("Test Name");
-
-            // Assert
-            Assert.AreEqual(BaseLogger.Path, "Logger.txt");
-        }
-
-        [TestMethod]
-        public void Null_FilePath_ReturnsNull()
-        {
-            // Arrange
-            LogFactory factory = new LogFactory();
-
-            // Act
-            BaseLogger logger = factory.CreateLogger("Test Name");
-
-            // Assert
-            Assert.IsNull(logger);
-        }
-    }
+    
 }

@@ -1,13 +1,7 @@
-﻿using System;
+﻿namespace Logger;
 
-namespace Logger
+public abstract class BaseLogger
 {
-    
-    public abstract class BaseLogger
-    {
-        public  static string Name { get; set; } = string.Empty;
-        public static string Path { get; set; } = string.Empty;
-        public abstract void Log(LogLevel logLevel, string message);
-        public string[] LoggedMessages { get; set; } = new string[0];
-    }
+    public abstract void Log(LogLevel logLevel, string message);
 }
+

@@ -2,12 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	<EnableNETAnalyzers>true</EnableNETAnalyzers>
-	<CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
-	<LangVersion>Latest</LangVersion>
-	<TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-	<Nullable>enable</Nullable>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
 
 </Project>
