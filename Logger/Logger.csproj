@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-	<EnableNETAnalyzers>true</EnableNETAnalyzers>
-	<CodeAnalysisTreatWarningsAsErrors>false</CodeAnalysisTreatWarningsAsErrors>
-	<LangVersion>Latest</LangVersion>
+	  <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+	  <EnableNETAnalyzers>true</EnableNETAnalyzers>
+	  <CodeAnalysisTreatWarningsAsErrors>true</CodeAnalysisTreatWarningsAsErrors>
+	  <LangVersion>Latest</LangVersion>
+	  <TargetFramework>netstandard2.0</TargetFramework>
 	<TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
 	<Nullable>enable</Nullable>
   </PropertyGroup>
