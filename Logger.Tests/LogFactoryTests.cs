@@ -10,7 +10,6 @@ namespace Logger.Tests
         [TestMethod]
         public void Set_ClassName_InBaseLogger()
         {
-
             // Arrange
             LogFactory factory = new LogFactory();
 
@@ -24,7 +23,6 @@ namespace Logger.Tests
         [TestMethod]
         public void Set_ClassName_WithNameOf()
         {
-
             // Arrange
             LogFactory factory = new LogFactory();
 
