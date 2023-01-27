@@ -5,6 +5,7 @@ namespace CanHazFunny.Tests
     [TestClass]
     public class JokeServiceTests
     {
-        
+        //test if jokeservice class implements IJokeservice
+
     }
 }

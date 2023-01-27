@@ -9,6 +9,6 @@ namespace CanHazFunny
 
     public interface IJokeWriter
     {
-
+        //function to write to console
     }
 }
