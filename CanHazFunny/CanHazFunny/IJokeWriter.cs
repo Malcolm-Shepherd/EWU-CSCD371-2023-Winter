@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 namespace CanHazFunny
 {
 
-    public interface IJokeWriter
+    public interface IJokeWriter 
     {
-        //function to write to console
+        protected void JokeToConsole(string inputJoke)
+        {
+            Console.WriteLine(inputJoke);
+        }
     }
 }

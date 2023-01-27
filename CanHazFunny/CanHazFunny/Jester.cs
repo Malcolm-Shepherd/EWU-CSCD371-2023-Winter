@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CanHazFunny;
+
 
 namespace CanHazFunny
 {
-    internal class Jester : IJokeService, IJokeWriter
+    internal class Jester 
     {
 
         public void TellJoke()
@@ -16,3 +18,7 @@ namespace CanHazFunny
 
     }
 }
+
+
+
+
