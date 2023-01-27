@@ -10,9 +10,4 @@ namespace CanHazFunny
     {
 
     }
-
-    public interface IJokeWriter
-    {
-
-    }
 }
