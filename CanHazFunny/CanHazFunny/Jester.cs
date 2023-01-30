@@ -8,7 +8,7 @@ using CanHazFunny;
 
 namespace CanHazFunny
 {
-    internal class Jester 
+    public class Jester : IJokeWriter, IJokeService 
     {
 
         public void TellJoke()
