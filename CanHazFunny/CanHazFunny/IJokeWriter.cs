@@ -9,7 +9,7 @@ namespace CanHazFunny
 
     public interface IJokeWriter 
     {
-        protected void JokeToConsole(string inputJoke)
+        public static void JokeToConsole(string inputJoke)
         {
             Console.WriteLine(inputJoke);
         }
