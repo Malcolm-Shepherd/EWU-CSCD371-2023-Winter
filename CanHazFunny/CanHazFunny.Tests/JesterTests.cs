@@ -20,8 +20,8 @@ namespace CanHazFunny.Tests
             JokeWriter testWriter = new JokeWriter();
             Jester tester = new Jester(testService, testWriter);
 
-            Assert.AreEqual(testService, tester.JokeIn);
-            Assert.AreEqual(testWriter, tester.JokeOut);
+            Assert.AreEqual<JokeService>(testService, tester.JokeIn);
+            Assert.AreEqual<JokeWriter>(testWriter, tester.JokeOut);
         }
 
         [TestMethod]

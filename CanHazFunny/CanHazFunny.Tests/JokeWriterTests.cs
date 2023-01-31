@@ -24,7 +24,7 @@ namespace CanHazFunny.Tests
             testWriter.JokeToConsole(input);
             string actual = output.ToString();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual<string>(expected, actual);
         }
     }
 }
