@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.IO;
 using System.Linq;
 
 namespace CanHazFunny.Tests
@@ -43,6 +44,19 @@ namespace CanHazFunny.Tests
             try { Jester nullPerson2 = new Jester(new JokeService(), null!); }
             catch (ArgumentNullException ex) { nullCheck2 = ex; }
             Assert.IsNotNull(nullCheck2);
+        }
+
+        [TestMethod]
+        public void TellJoke_IsNot_ChuckNorris()
+        {
+            Jester jokeTeller = new Jester(new JokeService(), new JokeWriter());
+            StringWriter output = new StringWriter();
+            Console.SetOut(output);
+
+            jokeTeller.TellJoke();
+            string joke = output.ToString();
+
+            Assert.IsTrue(!(joke.Contains("Chuck Norris")));
         }
     }
 }
