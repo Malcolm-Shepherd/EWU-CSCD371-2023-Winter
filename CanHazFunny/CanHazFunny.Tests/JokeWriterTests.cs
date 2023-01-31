@@ -22,7 +22,7 @@ namespace CanHazFunny.Tests
             string expected = string.Format(input+"{0}", Environment.NewLine); 
 
             testWriter.JokeToConsole(input);
-            string? actual = output.ToString();
+            string actual = output.ToString();
 
             Assert.AreEqual(expected, actual);
         }

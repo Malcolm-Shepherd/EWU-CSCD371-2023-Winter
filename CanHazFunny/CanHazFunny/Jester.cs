@@ -10,7 +10,34 @@ namespace CanHazFunny
 {
     public class Jester
     {
+        private JokeService? _JokeIn; 
+        private JokeWriter? _JokeOut;
 
+        public JokeService JokeIn { 
+            get {
+                return _JokeIn!;
+            }
+            set {
+                _JokeIn = value ?? throw new ArgumentNullException(nameof(value));
+            } 
+        }
+        public JokeWriter JokeOut
+        {
+            get
+            {
+                return _JokeOut!;
+            }
+            set
+            {
+                _JokeOut = value ?? throw new ArgumentNullException(nameof(value));
+            }
+        }
+
+        public Jester(JokeService jokeIn, JokeWriter jokeOut) 
+        {
+            JokeIn = jokeIn;
+            JokeOut = jokeOut;
+        }
         public void TellJoke()
         {
 
