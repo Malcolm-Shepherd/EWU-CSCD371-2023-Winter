@@ -9,9 +9,6 @@ namespace CanHazFunny
 
     public interface IJokeWriter 
     {
-        static void JokeToConsole(string inputJoke)
-        {
-            Console.WriteLine(inputJoke);
-        }
+        void JokeToConsole(string inputJoke);
     }
 }

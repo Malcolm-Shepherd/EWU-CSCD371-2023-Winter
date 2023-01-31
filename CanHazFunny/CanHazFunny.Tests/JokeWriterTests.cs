@@ -10,17 +10,18 @@ using System.Threading.Tasks;
 namespace CanHazFunny.Tests
 {
     [TestClass]
-    public class IJokeWriterTests
+    public class JokeWriterTests
     {
         [TestMethod]
         public void JokeToConsole_WritesInput_ToConsole()
         {
+            JokeWriter testWriter = new JokeWriter();
             StringWriter output = new StringWriter();
             Console.SetOut(output);
             string input = "Really Funny";
             string expected = string.Format(input+"{0}", Environment.NewLine); 
 
-            IJokeWriter.JokeToConsole(input);
+            testWriter.JokeToConsole(input);
             string? actual = output.ToString();
 
             Assert.AreEqual(expected, actual);

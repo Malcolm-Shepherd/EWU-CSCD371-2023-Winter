@@ -3,22 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CanHazFunny;
-
 
 namespace CanHazFunny
 {
-    public class Jester
+    public class JokeWriter : IJokeWriter
     {
-
-        public void TellJoke()
+        public void JokeToConsole(string inputJoke)
         {
-
+            Console.WriteLine(inputJoke);
         }
-
     }
 }
-
-
-
-
