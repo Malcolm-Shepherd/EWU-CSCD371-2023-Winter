@@ -40,7 +40,11 @@ namespace CanHazFunny
         }
         public void TellJoke()
         {
+            string joke;
+            do { joke = this.JokeIn.GetJoke(); }
+            while (joke.Contains("Chuck Norris"));
 
+            this.JokeOut.JokeToConsole(joke);
         }
 
     }
