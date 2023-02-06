@@ -22,21 +22,21 @@ public class FullNameTests
     [TestMethod]
     public void FullName_NullCheck_Pass()
     {
-        ArgumentNullException firstNull = null;
+        ArgumentNullException firstNull = null!;
 
-        try { FullName first = new(null, "a", "b"); }
+        try { FullName first = new(null!, "a", "b"); }
         catch (ArgumentNullException ex) { firstNull = ex; }
         Assert.IsNotNull(firstNull);
 
 
-        ArgumentNullException lastNull = null;
+        ArgumentNullException lastNull = null!;
 
-        try { FullName last = new("c", null, "d"); }
+        try { FullName last = new("c", null!, "d"); }
         catch (ArgumentNullException ex) { lastNull = ex; }
         Assert.IsNotNull(lastNull);
 
 
-        ArgumentNullException middleNull = null;
+        ArgumentNullException middleNull = null!;
 
         try { FullName middle = new("e", "f", null); }
         catch (ArgumentNullException ex) { middleNull = ex; }
