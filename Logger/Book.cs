@@ -8,6 +8,6 @@ namespace Logger;
 
 public record class Book(string Name) : Entity
 {
-
+    /*Takes in a Name (title).*/
     public override string Name { get; } = Name;
 }

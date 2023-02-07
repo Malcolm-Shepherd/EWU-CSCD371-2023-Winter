@@ -8,12 +8,10 @@ namespace Logger;
 
 public record class Student : Person
 {
+    /*Name is already implemented in Person and should be the same here.*/
     public Student(FullName PersonName) : base(PersonName)
     {
-    }
 
-    protected Student(Person original) : base(original)
-    {
     }
 }
 

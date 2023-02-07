@@ -8,5 +8,12 @@ namespace Logger;
 
 public record class Person(FullName PersonName) : Entity
 {
-    public override string Name { get; } = PersonName.ToString() ?? throw new ArgumentNullException(nameof(PersonName));
+    /*People have full names, so it only makes sense to take in a FullName*/
+    public override string Name {
+        get
+        {
+            return PersonName.MiddleName == null ? PersonName.FirstName + " " + PersonName.LastName: PersonName.FirstName + " " + PersonName.MiddleName + " " + PersonName.LastName;
+        }
+             
+    }
 }

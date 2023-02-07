@@ -21,6 +21,24 @@ public class EntityTests
         FullName testName = new("Dude", "Guy");
         Person testPerson = new(testName);
 
-        Assert.AreEqual(testName.ToString(), testPerson.Name);
+        Assert.AreEqual("Dude Guy", testPerson.Name);
+    }
+
+    [TestMethod]
+    public void Student_Implements_EntityAndPerson()
+    {
+        FullName testName = new("Not", "Me");
+        Student testStudent = new(testName);
+
+        Assert.AreEqual("Not Me", testStudent.Name);
+    }
+
+    [TestMethod]
+    public void Employee_Implements_EntityAndPerson()
+    {
+        FullName testName = new("Real", "People");
+        Employee testStudent = new(testName);
+
+        Assert.AreEqual("Real People", testStudent.Name);
     }
 }
