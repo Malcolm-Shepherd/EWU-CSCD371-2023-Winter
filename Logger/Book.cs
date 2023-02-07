@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace Logger;
+
+public record class Book(string Name) : Entity
 {
-    internal class Book
-    {
-    }
+
+    public override string Name { get; } = Name;
 }

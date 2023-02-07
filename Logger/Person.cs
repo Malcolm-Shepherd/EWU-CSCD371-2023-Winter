@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace Logger;
+
+public record class Person(FullName PersonName) : Entity
 {
-    internal class Person
-    {
-    }
+    public override string Name { get; } = PersonName.ToString() ?? throw new ArgumentNullException(nameof(PersonName));
 }

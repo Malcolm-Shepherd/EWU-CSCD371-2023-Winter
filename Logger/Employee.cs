@@ -4,9 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace Logger;
+
+public record class Employee : Person
 {
-    internal class Employee
+    public Employee(FullName PersonName) : base(PersonName)
+    {
+    }
+
+    protected Employee(Person original) : base(original)
     {
     }
 }

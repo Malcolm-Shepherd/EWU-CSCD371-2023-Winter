@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Logger
+namespace Logger;
+
+public abstract record class Entity : IEntity
 {
-    internal class Entity
-    {
-    }
-}
+    public virtual Guid Id { get; init; } = Guid.NewGuid();
+
+    public abstract string Name { get; }    
+} 

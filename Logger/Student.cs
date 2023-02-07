@@ -8,5 +8,12 @@ namespace Logger;
 
 public record class Student : Person
 {
+    public Student(FullName PersonName) : base(PersonName)
+    {
+    }
+
+    protected Student(Person original) : base(original)
+    {
+    }
 }
 
