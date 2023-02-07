@@ -25,20 +25,30 @@ public class StorageTests
     [TestMethod]
     public void Storage_Get_Returns_Expected_ID()
     {
-        
+
     }
 
     [TestMethod]
     public void Storage_Add_Adds_Entity()
     {
-    }
-[TestMethod]
-public void Storage_Remove_Removes_Entity()
-    {
-    }
-    [TestMethod]
-public void Storage_Contains_Returns_Expected_Item()
-    {
+        Book new_book = new Book("Princess Bride 2: On the Knife's Edge");
+
+        storage.Add(new_book);
+
+        Assert.IsTrue(storage.Contains(new_book));
     }
 
+    [TestMethod]
+    public void Storage_Remove_Removes_Entity()
+    {
+        storage.Remove(book);
+
+        Assert.IsFalse(storage.Contains(book));
+    }
+
+    [TestMethod]
+    public void Storage_Contains_Returns_Expected_Item()
+    {
+        Assert.IsTrue(storage.Contains(book));
+    }
 }
