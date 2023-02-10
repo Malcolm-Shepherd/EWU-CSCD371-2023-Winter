@@ -8,7 +8,7 @@ namespace Logger;
 
 public record class Person(FullName PersonName) : BaseEntity
 {
-    /*People have full names, so it only makes sense to take in a FullName*/
+    /*Implicity implemented as People have full names, so it only makes sense to take in a FullName*/
     public override string Name {
         get
         {
