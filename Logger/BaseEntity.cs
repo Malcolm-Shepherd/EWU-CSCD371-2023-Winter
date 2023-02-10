@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logger;
 
-public abstract record class Entity : IEntity
+public abstract record class BaseEntity : IEntity
 {
     public virtual Guid Id { get; init; } = Guid.NewGuid();
 

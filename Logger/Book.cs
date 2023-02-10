@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logger;
 
-public record class Book(string Name) : Entity
+public record class Book(string Name) : BaseEntity
 {
     /*Takes in a Name (title).*/
     public override string Name { get; } = Name;
