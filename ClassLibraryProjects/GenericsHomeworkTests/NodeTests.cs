@@ -47,4 +47,87 @@ public class NodeTests
         Assert.AreEqual<Node<int>>(node3.Next, node1);
 
     }
+
+    [TestMethod]
+    public void Clear_Clears_Pass()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        node1.Append(node2);
+        node2.Append(node3);
+
+        node1.Clear();
+        Assert.AreEqual(node1, node1.Next);
+
+    }
+
+    [TestMethod]
+    public void Clear_CloseLoops_Pass()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        node1.Append(node2);
+        node2.Append(node3);
+
+        node1.Clear();
+        Assert.AreEqual(node2, node2.Next);
+
+        //Preserve Node2 in the case we want to use it in or as another Node
+
+    }
+
+
+    [TestMethod]
+    public void Exists_ChecksValue_Pass()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        node1.Append(node2);
+        node2.Append(node3);
+
+
+        Assert.IsTrue(node1.Exists(0));
+    }
+
+    public void Exists_ChecksOwnValue_Pass()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        node1.Append(node2);
+        node2.Append(node3);
+
+        Assert.IsTrue(node1.Exists(42));
+    }
+
+    [TestMethod]
+    public void Exists_NonExistingValue_Fail()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        node1.Append(node2);
+        node2.Append(node3);
+
+        Assert.IsFalse(node1.Exists(1337));
+
+    }
+
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException),
+    "Duplicate Value Detected")]
+    public void Append_DuplicateValue_Throw()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        Node<int> node_duplicate = new(0);
+        node1.Append(node2);
+        node2.Append(node3);
+        node3.Append(node_duplicate);   
+    }
+
 }
