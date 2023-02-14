@@ -32,4 +32,19 @@ public class NodeTests
 
         Assert.AreEqual<string>(testValue.ToString(), test.ToString());
     }
+
+    [TestMethod]
+    public void Append_Appends_Pass()
+    {
+        Node<int> node1 = new(42);
+        Node<int> node2 = new(0);
+        Node<int> node3 = new(314);
+        node1.Append(node2);
+        node2.Append(node3);
+
+        Assert.AreEqual<Node<int>>(node1.Next, node2);
+        Assert.AreEqual<Node<int>>(node2.Next, node3);
+        Assert.AreEqual<Node<int>>(node3.Next, node1);
+
+    }
 }
