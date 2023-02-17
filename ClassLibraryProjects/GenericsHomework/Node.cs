@@ -5,22 +5,22 @@ namespace GenericsHomework
 {
     public class Node<T>
     {
-        private Node<T>? _Next;
-        public T Value { get; set; }
+        private Node<T>? _next;
+        public T? Value { get; set; }
         
         // I don't know how to unit test for null with the way Next is being used. //
         public Node<T> Next
         {
             get
             {
-                return _Next!;
+                return _next!;
             }
             private set
             { 
-                _Next = value ?? throw new ArgumentNullException(nameof(value));
+                _next = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
-        public Node(T value) 
+        public Node(T? value) 
         { 
             Value = value;
             Next = this;
@@ -28,33 +28,28 @@ namespace GenericsHomework
 
         public override string ToString() 
         {
-            return this.Value!.ToString()!;
+            if (Value is null) return string.Empty;
+            else return Value.ToString() ?? string.Empty;
         }
 
-        public void Append(Node<T> nextNode) 
+        public void Append(T value) 
         { 
-            if (this.Exists(nextNode.Value))
+
+            if (Exists(value))
             {
                 throw new ArgumentException("Duplicate Value detected");
             }
-
-            nextNode.Next = this.Next;
-            this.Next = nextNode;    
+            Node<T> nextNode = new Node<T>(value);
+            nextNode.Next = Next;
+            Next = nextNode;    
         }
 
         public void Clear()
         {
-            Node<T> cur = this.Next;
-            Node<T> temp = cur;
-            while (cur != this)
-            {
-                cur = cur.Next;
-                temp.Next = temp;
-                temp = cur;
-            }
-            this.Next = cur;
+            Next = this;
 
             // There is no need to collect garbage. C# .Net automatically collects garbage on memory space that is no longer used
+            // Nothing points to the nodes that are cut off, so they will eventually be collected.
         }
 
         public bool Exists(T value)
@@ -63,7 +58,7 @@ namespace GenericsHomework
 
             do
             {
-                if (value.Equals(cur.Value))
+                if (Equals(value, cur.Value))
                 { return true; }
                 cur = cur.Next;
             }

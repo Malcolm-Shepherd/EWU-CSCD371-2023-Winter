@@ -37,14 +37,11 @@ public class NodeTests
     public void Append_Appends_Pass()
     {
         Node<int> node1 = new(42);
-        Node<int> node2 = new(0);
-        Node<int> node3 = new(314);
-        node1.Append(node2);
-        node2.Append(node3);
+        node1.Append(0);
+        node1.Append(314);
 
-        Assert.AreEqual<Node<int>>(node1.Next, node2);
-        Assert.AreEqual<Node<int>>(node2.Next, node3);
-        Assert.AreEqual<Node<int>>(node3.Next, node1);
+        Assert.AreEqual<int>(node1.Next.Value, 314);
+        Assert.AreEqual<int>(node1.Next.Next.Value, 0);
 
     }
 
@@ -54,8 +51,8 @@ public class NodeTests
         Node<int> node1 = new(42);
         Node<int> node2 = new(0);
         Node<int> node3 = new(314);
-        node1.Append(node2);
-        node2.Append(node3);
+        node1.Append(0);
+        node1.Append(314);
 
         node1.Clear();
         Assert.AreEqual(node1, node1.Next);
@@ -68,8 +65,8 @@ public class NodeTests
         Node<int> node1 = new(42);
         Node<int> node2 = new(0);
         Node<int> node3 = new(314);
-        node1.Append(node2);
-        node2.Append(node3);
+        node1.Append(0);
+        node1.Append(314);
 
         node1.Clear();
         Assert.AreEqual(node2, node2.Next);
@@ -85,20 +82,20 @@ public class NodeTests
         Node<int> node1 = new(42);
         Node<int> node2 = new(0);
         Node<int> node3 = new(314);
-        node1.Append(node2);
-        node2.Append(node3);
+        node1.Append(0);
+        node1.Append(314);
 
 
         Assert.IsTrue(node1.Exists(0));
     }
-
+    [TestMethod]
     public void Exists_ChecksOwnValue_Pass()
     {
         Node<int> node1 = new(42);
         Node<int> node2 = new(0);
         Node<int> node3 = new(314);
-        node1.Append(node2);
-        node2.Append(node3);
+        node1.Append(0);
+        node1.Append(314);
 
         Assert.IsTrue(node1.Exists(42));
     }
@@ -109,8 +106,8 @@ public class NodeTests
         Node<int> node1 = new(42);
         Node<int> node2 = new(0);
         Node<int> node3 = new(314);
-        node1.Append(node2);
-        node2.Append(node3);
+        node1.Append(0);
+        node1.Append(314);
 
         Assert.IsFalse(node1.Exists(1337));
 
@@ -125,9 +122,9 @@ public class NodeTests
         Node<int> node2 = new(0);
         Node<int> node3 = new(314);
         Node<int> node_duplicate = new(0);
-        node1.Append(node2);
-        node2.Append(node3);
-        node3.Append(node_duplicate);   
+        node1.Append(0);
+        node1.Append(314);
+        node1.Append(0);   
     }
 
 }
