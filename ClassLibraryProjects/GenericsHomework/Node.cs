@@ -6,7 +6,7 @@ namespace GenericsHomework
     public class Node<T>
     {
         private Node<T>? _next;
-        public T? Value { get; set; }
+        public T Value { get; set; }
         
         // I don't know how to unit test for null with the way Next is being used. //
         public Node<T> Next
@@ -20,7 +20,7 @@ namespace GenericsHomework
                 _next = value ?? throw new ArgumentNullException(nameof(value));
             }
         }
-        public Node(T? value) 
+        public Node(T value) 
         { 
             Value = value;
             Next = this;
