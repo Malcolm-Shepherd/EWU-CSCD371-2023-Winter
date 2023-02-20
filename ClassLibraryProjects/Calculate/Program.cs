@@ -2,13 +2,33 @@
 
 public class Program
 {
-    private delegate string _writeLine
-    {
-        init { _writeLine = ""; }
+    public Action<string> WriteLine{ 
+        get 
+        { 
+            Action<string> action = Console.WriteLine;
+            return action;
+        }
+        init 
+        {
+            WriteLine = value;
+        }
     }
 
-    private delegate string _readLine;
+    public Func<string> ReadLine
     {
-        init { _readLine = ""; }
+        get 
+        {
+            Func<string> read = Console.ReadLine;
+            return read;
+        }
+        init 
+        { 
+            ReadLine = value;   
+        }
+    }
+
+    public static void Main(string[] args) 
+    {
+        
     }
 }
