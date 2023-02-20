@@ -14,11 +14,11 @@ public class Program
         }
     }
 
-    public Func<string> ReadLine
+    public Func<string?> ReadLine
     {
         get 
         {
-            Func<string> read = Console.ReadLine;
+            Func<string?> read = Console.ReadLine;
             return read;
         }
         init 
@@ -26,6 +26,8 @@ public class Program
             ReadLine = value;   
         }
     }
+
+    public Program() { }
 
     public static void Main(string[] args) 
     {
