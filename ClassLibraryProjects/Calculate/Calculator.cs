@@ -30,7 +30,7 @@ public class Calculator
     public int? TryCalculate(string calculation)
     {
 
-        String[] calcvars = calculation.Split(' ');
+        string[] calcvars = calculation.Split(' ');
         int operand1;
         int operand2;
 

@@ -1,5 +1,8 @@
 ﻿
 
+using Calculate;
+using System.Runtime.CompilerServices;
+
 public class Program
 {
     public Action<string> WriteLine{ 
@@ -14,11 +17,11 @@ public class Program
         }
     }
 
-    public Func<string?> ReadLine
+    public Func<string> ReadLine
     {
         get 
         {
-            Func<string?> read = Console.ReadLine;
+            Func<string> read = Console.ReadLine!;
             return read;
         }
         init 
@@ -31,6 +34,21 @@ public class Program
 
     public static void Main(string[] args) 
     {
-        
+        Calculator calculator = new Calculator();
+        Program program = new Program();    
+        int? result = 0;
+
+        while(result is not null) 
+        {
+            program.WriteLine("Enter an equation:");
+            string equation = program.ReadLine.Invoke();
+            result = calculator.TryCalculate(equation);
+            if (result is not null)
+            {
+                program.WriteLine(result.ToString()!);
+            }
+        }
+
+        program.WriteLine("Good Bye!");
     }
 }

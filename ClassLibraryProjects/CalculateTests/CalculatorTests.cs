@@ -60,10 +60,10 @@ public class CalculatorTests
 
 
 
-        Assert.AreEqual(testAdd(30, 12), testCalculator.TryCalculate("30 + 12"));
-        Assert.AreEqual(testSub(30, 12), testCalculator.TryCalculate("30 - 12"));
-        Assert.AreEqual(testMult(30, 12), testCalculator.TryCalculate("30 * 12"));
-        Assert.AreEqual(testDiv(30, 12), testCalculator.TryCalculate("30 / 12"));        
+        Assert.AreEqual<int?>(testAdd(30, 12), testCalculator.TryCalculate("30 + 12"));
+        Assert.AreEqual<int?>(testSub(30, 12), testCalculator.TryCalculate("30 - 12"));
+        Assert.AreEqual<int?>(testMult(30, 12), testCalculator.TryCalculate("30 * 12"));
+        Assert.AreEqual<int?>(testDiv(30, 12), testCalculator.TryCalculate("30 / 12"));        
     }
 
     [TestMethod]
