@@ -10,7 +10,7 @@ public class CalculatorTests
     [TestMethod]
     public void OnConstruction_CalculatorProperties_Pass()
     {
-        Calculator testCalculator = new Calculator();
+        Calculator testCalculator = new();
     }
 
     [TestMethod]
@@ -18,7 +18,7 @@ public class CalculatorTests
     {
         string testLine = "I'm on the console.";/*
         Action<string> write = (string text) => { Console.WriteLine(text); };*/
-        Program testPr = new Program();
+        Program testPr = new();
         testPr.WriteLine(testLine);
     }
 
@@ -34,7 +34,7 @@ public class CalculatorTests
     [TestMethod]
     public void CalculatorDictionary_ContainsProprerValues_Pass()
     {
-        Calculator testCalculator = new Calculator();
+        Calculator testCalculator = new();
         Func<int, int, int> testAdd = Calculator.Add;
         Func<int, int, int> testSub = Calculator.Subtract;
         Func<int, int, int> testMult = Calculator.Multiply;
@@ -50,9 +50,9 @@ public class CalculatorTests
 
 
     [TestMethod]
-    public void TryCalculate_ParseCommands_pass()
+    public void TryCalculate_ParseCommands_Pass()
     {
-        Calculator testCalculator = new Calculator();
+        Calculator testCalculator = new();
         Func<int, int, int> testAdd = Calculator.Add;
         Func<int, int, int> testSub = Calculator.Subtract;
         Func<int, int, int> testMult = Calculator.Multiply;
@@ -65,4 +65,19 @@ public class CalculatorTests
         Assert.AreEqual(testMult(30, 12), testCalculator.TryCalculate("30 * 12"));
         Assert.AreEqual(testDiv(30, 12), testCalculator.TryCalculate("30 / 12"));        
     }
+
+    [TestMethod]
+    public void TryCalculate_InvalidCommands_Fail()
+    {
+        Calculator testCalculator = new();
+        Func<int, int, int> testAdd = Calculator.Add;
+        Func<int, int, int> testSub = Calculator.Subtract;
+        Func<int, int, int> testMult = Calculator.Multiply;
+        Func<int, int, int> testDiv = Calculator.Divide;
+
+        Assert.IsNull(testCalculator.TryCalculate("30+12"));
+        Assert.IsNull(testCalculator.TryCalculate("30.1 + 12"));
+        Assert.IsNull(testCalculator.TryCalculate("30 z 12"));
+    }
+
 }

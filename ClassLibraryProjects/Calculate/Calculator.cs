@@ -27,23 +27,38 @@ public class Calculator
         } 
     }
 
-    public int TryCalculate(string calculation)
+    public int? TryCalculate(string calculation)
     {
 
         String[] calcvars = calculation.Split(' ');
+        int operand1;
+        int operand2;
 
         if (calcvars.Length != 3)
-            return false;
+            return null;
 
-
-        int operand1 = Int32.Parse(calcvars[0]);
-        int operand2 = Int32.Parse(calcvars[2]);
+        try
+        {
+            operand1 = Int32.Parse(calcvars[0]);
+            operand2 = Int32.Parse(calcvars[2]);
+        }
+        catch
+        { 
+            return null; 
+        }
 
         switch (calcvars[1])
         {
             case "+":
                 return Calculator.Add(operand1, operand2);
-                break; 
+            case "-":
+                return Calculator.Subtract(operand1, operand2);
+            case "*":
+                return Calculator.Multiply(operand1, operand2);
+            case "/":
+                return Calculator.Divide(operand1, operand2);
+            default:
+                return null;
         }
     }
 }
