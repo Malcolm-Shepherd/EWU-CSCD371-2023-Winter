@@ -14,7 +14,7 @@ public class Calculator
     public static Func<int, int, int> Divide => (x, y) => x / y;
 
     //Read only as there is not way to set it.
-    public System.Collections.Generic.IReadOnlyDictionary<char, Func<int, int, int>> MatematicalOperations 
+    public System.Collections.Generic.IReadOnlyDictionary<char, Func<int, int, int>> MathematicalOperations 
     { get 
         {
             Dictionary<char, Func<int, int, int>> operators = new();
@@ -25,5 +25,25 @@ public class Calculator
 
             return operators;
         } 
+    }
+
+    public int TryCalculate(string calculation)
+    {
+
+        String[] calcvars = calculation.Split(' ');
+
+        if (calcvars.Length != 3)
+            return false;
+
+
+        int operand1 = Int32.Parse(calcvars[0]);
+        int operand2 = Int32.Parse(calcvars[2]);
+
+        switch (calcvars[1])
+        {
+            case "+":
+                return Calculator.Add(operand1, operand2);
+                break; 
+        }
     }
 }
