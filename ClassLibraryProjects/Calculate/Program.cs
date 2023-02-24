@@ -5,30 +5,9 @@ using System.Runtime.CompilerServices;
 
 public class Program
 {
-    public Action<string> WriteLine{ 
-        get 
-        { 
-            Action<string> action = Console.WriteLine;
-            return action;
-        }
-        init 
-        {
-            WriteLine = value;
-        }
-    }
+    public Action<string> WriteLine{ get; init; } = Console.WriteLine;
 
-    public Func<string> ReadLine
-    {
-        get 
-        {
-            Func<string> read = Console.ReadLine!;
-            return read;
-        }
-        init 
-        { 
-            ReadLine = value;   
-        }
-    }
+    public Func<string> ReadLine{ get; init; } = Console.ReadLine!;
 
     public Program() { }
 
@@ -36,14 +15,14 @@ public class Program
     {
         Calculator calculator = new Calculator();
         Program program = new Program();    
-        int? result = 0;
-
-        while(result is not null) 
+        int result = 0;
+        bool valid = true;
+        while(valid) 
         {
             program.WriteLine("Enter an equation:");
             string equation = program.ReadLine.Invoke();
-            result = calculator.TryCalculate(equation);
-            if (result is not null)
+            valid = calculator.TryCalculate(equation, out result);
+            if (valid)
             {
                 program.WriteLine(result.ToString()!);
             }

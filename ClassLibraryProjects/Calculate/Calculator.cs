@@ -27,15 +27,15 @@ public class Calculator
         } 
     }
 
-    public int? TryCalculate(string calculation)
+    public bool TryCalculate(string calculation, out int result)
     {
-
+        result = 0;
         string[] calcvars = calculation.Split(' ');
         int operand1;
         int operand2;
 
         if (calcvars.Length != 3)
-            return null;
+            return false;
 
         try
         {
@@ -43,22 +43,21 @@ public class Calculator
             operand2 = Int32.Parse(calcvars[2]);
         }
         catch
-        { 
-            return null; 
+        {
+            return false;
         }
 
-        switch (calcvars[1])
+        Func<int, int, int> operation;
+        try
         {
-            case "+":
-                return Calculator.Add(operand1, operand2);
-            case "-":
-                return Calculator.Subtract(operand1, operand2);
-            case "*":
-                return Calculator.Multiply(operand1, operand2);
-            case "/":
-                return Calculator.Divide(operand1, operand2);
-            default:
-                return null;
+            operation = MathematicalOperations[calcvars[1][0]];
         }
+        catch (System.Collections.Generic.KeyNotFoundException) 
+        {
+            return false;
+        }
+        result = operation(operand1, operand2);
+        return true;
+
     }
 }

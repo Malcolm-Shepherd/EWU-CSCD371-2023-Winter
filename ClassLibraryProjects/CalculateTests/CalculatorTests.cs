@@ -7,29 +7,33 @@ namespace CalculateTests;
 [TestClass]
 public class CalculatorTests
 {
-    [TestMethod]
-    public void OnConstruction_CalculatorProperties_Pass()
-    {
-        Calculator testCalculator = new();
-    }
 
     [TestMethod]
     public void ProgramWriteLine_WritesToConsole_Pass()
     {
-        string testLine = "I'm on the console.";/*
-        Action<string> write = (string text) => { Console.WriteLine(text); };*/
+        string testLine = "I'm on the console.";
         Program testPr = new();
+        StringWriter output = new();
+        Console.SetOut(output);
+        string expected = string.Format(testLine + "{0}", Environment.NewLine);
         testPr.WriteLine(testLine);
+        string actual = output.ToString();
+
+        Assert.AreEqual<string>(expected, actual);  
     }
 
-    //Waits for input from console, but never prompts a console.
-    /*    [TestMethod]
-        public void ProgramReadLine_ReadsFromConsole_Pass()
-        {
-            Program testPr = new Program();
+    [TestMethod]
+    public void ProgramReadLine_ReadsFromConsole_Pass()
+    {
+        string expected = "I'm on the console.";
+        Program testPr = new();
+        StringReader input = new(expected);
+        Console.SetIn(input);
+        string actual = testPr.ReadLine();
 
-            string? testLine = testPr.ReadLine();
-        }*/
+        Assert.AreEqual<string>(expected, actual);
+    }
+
 
     [TestMethod]
     public void CalculatorDictionary_ContainsProprerValues_Pass()
@@ -53,21 +57,19 @@ public class CalculatorTests
     public void TryCalculate_ParseCommands_Pass()
     {
         Calculator testCalculator = new();
-        Func<int, int, int> testAdd = Calculator.Add;
-        Func<int, int, int> testSub = Calculator.Subtract;
-        Func<int, int, int> testMult = Calculator.Multiply;
-        Func<int, int, int> testDiv = Calculator.Divide;
-
-
-
-        Assert.AreEqual<int?>(testAdd(30, 12), testCalculator.TryCalculate("30 + 12"));
-        Assert.AreEqual<int?>(testSub(30, 12), testCalculator.TryCalculate("30 - 12"));
-        Assert.AreEqual<int?>(testMult(30, 12), testCalculator.TryCalculate("30 * 12"));
-        Assert.AreEqual<int?>(testDiv(30, 12), testCalculator.TryCalculate("30 / 12"));        
+        int results;
+        testCalculator.TryCalculate("30 + 12", out results);
+        Assert.AreEqual<int?>(42, results);
+        testCalculator.TryCalculate("30 - 12", out results);
+        Assert.AreEqual<int?>(18, results);
+        testCalculator.TryCalculate("30 * 12", out results);
+        Assert.AreEqual<int?>(360, results);
+        testCalculator.TryCalculate("30 / 12", out results);
+        Assert.AreEqual<int?>(2, results);        
     }
 
     [TestMethod]
-    public void TryCalculate_InvalidCommands_Fail()
+    public void CalculatorFuncs_Result_Pass()
     {
         Calculator testCalculator = new();
         Func<int, int, int> testAdd = Calculator.Add;
@@ -75,9 +77,23 @@ public class CalculatorTests
         Func<int, int, int> testMult = Calculator.Multiply;
         Func<int, int, int> testDiv = Calculator.Divide;
 
-        Assert.IsNull(testCalculator.TryCalculate("30+12"));
-        Assert.IsNull(testCalculator.TryCalculate("30.1 + 12"));
-        Assert.IsNull(testCalculator.TryCalculate("30 z 12"));
+
+
+        Assert.AreEqual<int?>(testAdd(30, 12), 42);
+        Assert.AreEqual<int?>(testSub(30, 12), 18);
+        Assert.AreEqual<int?>(testMult(30, 12), 360);
+        Assert.AreEqual<int?>(testDiv(30, 12), 2);
+    }
+
+    [TestMethod]
+    public void TryCalculate_InvalidCommands_Fail()
+    {
+        Calculator testCalculator = new();
+        int results = 0;
+
+        Assert.IsFalse(testCalculator.TryCalculate("30+12", out results));
+        Assert.IsFalse(testCalculator.TryCalculate("30.1 + 12", out results));
+        Assert.IsFalse(testCalculator.TryCalculate("30 z 12", out results));
     }
 
 }
