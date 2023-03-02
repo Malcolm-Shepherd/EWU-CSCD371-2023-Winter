@@ -1,12 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Security.Cryptography;
+using System.Linq;
 
 namespace Assignment
 {
     public class SampleData : ISampleData
     {
         // 1.
-        public IEnumerable<string> CsvRows => throw new NotImplementedException();
+        public IEnumerable<string> CsvRows 
+        {
+            get
+            {
+                IEnumerable<string> lines =
+                    from line in File.ReadLines("People.csv")
+                    where line.Contains('@')
+                    select line;
+                return lines;
+            } 
+        }
 
         // 2.
         public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
