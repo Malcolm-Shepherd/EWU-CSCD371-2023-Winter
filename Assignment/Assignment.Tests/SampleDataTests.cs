@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Assignment.Tests
 {
     [TestClass]
-    public class SampleDataTests
+    public class CsvRowsTests
     {
         string file = "People.csv";
         [TestMethod]
@@ -17,10 +17,12 @@ namespace Assignment.Tests
         {
             SampleData testData = new();
             int lineCount = 0;
-            using(StreamReader input = new StreamReader(file)) {
+            using (StreamReader input = new StreamReader(file))
+            {
                 string? line;
                 input.ReadLine();
-                while((line = input.ReadLine()) != null) {
+                while ((line = input.ReadLine()) != null)
+                {
                     Assert.AreEqual<string>(line, testData.CsvRows.ElementAt(lineCount));
                     lineCount++;
                 }
@@ -29,4 +31,38 @@ namespace Assignment.Tests
             Assert.AreEqual<int>(lineCount, testData.CsvRows.Count());
         }
     }
+
+    [TestClass]
+    public class GetUniqueSortedListOfStatesGivenCsvRowsTests
+    { }
+
+
+
+    [TestClass]
+    public class GetAggregateSortedListOfStatesUsingCsvRowsTests
+    {
+
+    }
+
+    [TestClass]
+    public class PeopleTests
+    {
+
+    }
+
+    [TestClass]
+    public class FilterByEmailAddressTests
+    {
+
+    }
+
+    }
+
+    [TestClass]
+    public class NodeEnumerableTests
+{
+
+    }
+
+
 }
