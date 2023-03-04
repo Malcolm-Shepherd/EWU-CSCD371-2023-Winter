@@ -22,12 +22,26 @@ namespace Assignment
         }
 
         // 2.
-        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows() 
-            => throw new NotImplementedException();
+        public IEnumerable<string> GetUniqueSortedListOfStatesGivenCsvRows()
+        {
+            List<string> states = new List<string>();
+            foreach(string item in CsvRows) 
+            {
+                string[] Csvs  = item.Split(',');
+                states.Add(Csvs[6]);
+            } 
+            IEnumerable<string> uniqueStates = states.Distinct().OrderBy(state => state);
+            return uniqueStates;
+        }
 
         // 3.
-        public string GetAggregateSortedListOfStatesUsingCsvRows()
-            => throw new NotImplementedException();
+        public string GetAggregateSortedListOfStatesUsingCsvRows() 
+        {
+            IEnumerable<string> states = this.GetUniqueSortedListOfStatesGivenCsvRows();
+            
+
+            return string.Join(',', states.ToArray());
+        }
 
         // 4.
         public IEnumerable<IPerson> People => throw new NotImplementedException();
