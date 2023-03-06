@@ -101,7 +101,11 @@ public class GetAggregateSortedListOfStatesUsingCsvRowsTests
     {
         SampleData testData = new();
         string states = testData.GetAggregateSortedListOfStatesUsingCsvRows();
-        Assert.AreEqual<string>("hi", states);
+        string[] statesArr = states.Split(',');
+        for (int i = 0; i < statesArr.Length - 2; i++)
+        {
+            Assert.IsTrue(statesArr[i].CompareTo(statesArr[i+1]) < 0);
+        }
     }
 }
 
@@ -116,17 +120,50 @@ public class PeopleTests
     [TestMethod]
     public void People_ReturnsMultiplePersons_Pass()
     {
-        Assert.IsFalse(true);
+        SampleData testData = new();
+        IEnumerable<IPerson> people = testData.People;
+        foreach (IPerson item in people) 
+        {
+            Assert.IsNotNull(item); 
+            Assert.AreEqual<Type>(typeof(Person), item.GetType());
+        }
     }
     [TestMethod]
     public void People_Sorted_Pass()
     {
-        Assert.IsFalse(true);
+        SampleData testData = new();
+        IEnumerable<IPerson> sortedPeople = testData.People;
+        IPerson prev = sortedPeople.First();
+        foreach (IPerson item in sortedPeople)
+        {
+            if (prev != item)
+            {
+                bool isLess = true;
+                if (prev.Address.State.CompareTo(item.Address.State) > 0) 
+                {
+                    if (prev.Address.City.CompareTo(item.Address.City) > 0)
+                    {
+                        if (prev.Address.Zip.CompareTo(item.Address.Zip) > 0)
+                        {
+                            isLess = false;
+                        }
+                    }
+                }
+                Assert.IsTrue(isLess);
+            }
+            prev = item;
+        }
     }
     [TestMethod]
     public void People_AddressesPopulated_Pass()
     {
-        Assert.IsFalse(true);
+        SampleData testData = new();
+        IEnumerable<IPerson> people = testData.People;
+        foreach (IPerson item in people)
+        {
+            Assert.IsNotNull(item.Address);
+            Assert.AreEqual<Type>(typeof(Address), item.Address.GetType());
+        }
     }
 
 }
@@ -142,7 +179,16 @@ public class FilterByEmailAddressTests
     [TestMethod]
     public void Filter_ReturnsListThatMatchEmail_Pass()
     {
-        Assert.IsFalse(true);
+        SampleData testData = new();
+        IEnumerable<(string first, string last)> names = testData.FilterByEmailAddress( email => email.Equals("eloseked@posterous.com"));
+
+        foreach (IPerson item in testData.People)
+        {
+            if (item.EmailAddress.Equals("eloseked@posterous.com"))
+            {
+                Assert.IsTrue(names.Contains((item.FirstName,item.LastName)));
+            }
+        }
     }
 }
 

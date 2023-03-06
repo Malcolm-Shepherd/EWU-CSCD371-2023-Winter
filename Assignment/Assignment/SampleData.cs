@@ -44,11 +44,38 @@ namespace Assignment
         }
 
         // 4.
-        public IEnumerable<IPerson> People => throw new NotImplementedException();
+        public IEnumerable<IPerson> People
+        { 
+            get 
+            {
+                List<Person> people = new List<Person>();
+                List<Address> addresses = new List<Address>();
+                foreach (string item in CsvRows)
+                {
+                    string[] Csvs = item.Split(',');
+                    people.Add(new (Csvs[1], Csvs[2], new Address(Csvs[4], Csvs[5], Csvs[6], Csvs[7]), Csvs[3]));
+                    addresses.Add(new (Csvs[4], Csvs[5], Csvs[6], Csvs[7]));
+                }
+                IEnumerable<Person> sortedPeople = people.OrderBy(person => person.Address.State).ThenBy(person => person.Address.City).ThenBy(person => person.Address.Zip);
+                return sortedPeople;
+            }
+        }
 
         // 5.
         public IEnumerable<(string FirstName, string LastName)> FilterByEmailAddress(
-            Predicate<string> filter) => throw new NotImplementedException();
+            Predicate<string> filter)
+        {
+            List<(string first, string last)> names = new();
+
+            foreach (Person item in People) 
+            {
+                if (filter(item.EmailAddress)) 
+                {
+                    names.Add((item.FirstName, item.LastName));
+                }
+            }
+            return names;
+        }
 
         // 6.
         public string GetAggregateListOfStatesGivenPeopleCollection(
