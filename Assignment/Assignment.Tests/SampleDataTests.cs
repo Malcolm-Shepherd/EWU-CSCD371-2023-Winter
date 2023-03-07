@@ -8,7 +8,7 @@ using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Assignment.Tests
+namespace Instruction.Tests
 {
     [TestClass]
     public class CsvRowsTests
@@ -33,187 +33,188 @@ namespace Assignment.Tests
             Assert.AreEqual<int>(lineCount, testData.CsvRows.Count());
         }
     }
-}
-
-[TestClass]
-public class GetUniqueSortedListOfStatesGivenCsvRowsTests
-{
-/*    [TestInitialize]
-    public void AssemblyInitialize()
+    [TestClass]
+    public class GetUniqueSortedListOfStatesGivenCsvRowsTests
     {
-        //source = csvrows()
-    }*/
-    [TestMethod]
-    public void CsvRowList_ReturnsListOfStates_Pass()
-    {
-        Assert.IsFalse(true);
-    }
-    [TestMethod]
-    public void CsvRowList_isUnique_Pass()
-    {
-        SampleData testData = new();
-        IEnumerable<string> uniqueStates = testData.GetUniqueSortedListOfStatesGivenCsvRows();
-        foreach(string item in uniqueStates) 
-        { 
-            Assert.AreEqual<int>(1, uniqueStates.Where(state => state == item).Count());
-        }  
-    }
-    [TestMethod]
-    public void CsvRowList_isSorted_Pass()
-    {
-        SampleData testData = new();
-        IEnumerable<string> sortedStates = testData.GetUniqueSortedListOfStatesGivenCsvRows();
-        string prev = sortedStates.First();
-        foreach(string item in sortedStates) 
-        {
-            if (prev != item) 
-            { 
-                Assert.IsTrue(prev.CompareTo(item) < 0); 
-            }
-            prev = item;
-        }
-    }
-    [TestMethod]
-    public void CsvRowList_AccuratetoAddresses_Hardcoded_Pass()
-    {
-        Assert.IsFalse(true);
-    }
-    [TestMethod]
-    public void CsvRowList_AccuratetoAddresses_LINQ_Pass()
-    {
-        Assert.IsFalse(true);
-    }
-
-}
-
-
-
-[TestClass]
-public class GetAggregateSortedListOfStatesUsingCsvRowsTests
-{
-    /*   [AssemblyInitialize]
-       public void AssemblyInitialize()
-       {
-           //source = getaggregatesortedlistofstatesusingcsvrows()
-       }*/
-    [TestMethod]
-    public void GetAggregate_CommaSeperatedListString_Pass()
-    {
-        SampleData testData = new();
-        string states = testData.GetAggregateSortedListOfStatesUsingCsvRows();
-        string[] statesArr = states.Split(',');
-        for (int i = 0; i < statesArr.Length - 2; i++)
-        {
-            Assert.IsTrue(statesArr[i].CompareTo(statesArr[i+1]) < 0);
-        }
-    }
-}
-
-[TestClass]
-public class PeopleTests
-{
-/*    [AssemblyInitialize]
-    public void AssemblyInitialize()
-    {
-        //source = csvrows()
-    }*/
-    [TestMethod]
-    public void People_ReturnsMultiplePersons_Pass()
-    {
-        SampleData testData = new();
-        IEnumerable<IPerson> people = testData.People;
-        foreach (IPerson item in people) 
-        {
-            Assert.IsNotNull(item); 
-            Assert.AreEqual<Type>(typeof(Person), item.GetType());
-        }
-    }
-    [TestMethod]
-    public void People_Sorted_Pass()
-    {
-        SampleData testData = new();
-        IEnumerable<IPerson> sortedPeople = testData.People;
-        IPerson prev = sortedPeople.First();
-        foreach (IPerson item in sortedPeople)
-        {
-            if (prev != item)
+        /*    [TestInitialize]
+            public void AssemblyInitialize()
             {
-                bool isLess = true;
-                if (prev.Address.State.CompareTo(item.Address.State) > 0) 
+                //source = csvrows()
+            }*/
+        [TestMethod]
+        public void CsvRowList_ReturnsListOfStates_Pass()
+        {
+            Assert.IsFalse(true);
+        }
+        [TestMethod]
+        public void CsvRowList_isUnique_Pass()
+        {
+            SampleData testData = new();
+            IEnumerable<string> uniqueStates = testData.GetUniqueSortedListOfStatesGivenCsvRows();
+            foreach (string item in uniqueStates)
+            {
+                Assert.AreEqual<int>(1, uniqueStates.Where(state => state == item).Count());
+            }
+        }
+        [TestMethod]
+        public void CsvRowList_isSorted_Pass()
+        {
+            SampleData testData = new();
+            IEnumerable<string> sortedStates = testData.GetUniqueSortedListOfStatesGivenCsvRows();
+            string prev = sortedStates.First();
+            foreach (string item in sortedStates)
+            {
+                if (prev != item)
                 {
-                    if (prev.Address.City.CompareTo(item.Address.City) > 0)
+                    Assert.IsTrue(prev.CompareTo(item) < 0);
+                }
+                prev = item;
+            }
+        }
+        [TestMethod]
+        public void CsvRowList_AccuratetoAddresses_Hardcoded_Pass()
+        {
+            Assert.IsFalse(true);
+        }
+        [TestMethod]
+        public void CsvRowList_AccuratetoAddresses_LINQ_Pass()
+        {
+            Assert.IsFalse(true);
+        }
+
+    }
+
+
+
+    [TestClass]
+    public class GetAggregateSortedListOfStatesUsingCsvRowsTests
+    {
+        /*   [AssemblyInitialize]
+           public void AssemblyInitialize()
+           {
+               //source = getaggregatesortedlistofstatesusingcsvrows()
+           }*/
+        [TestMethod]
+        public void GetAggregate_CommaSeperatedListString_Pass()
+        {
+            SampleData testData = new();
+            string states = testData.GetAggregateSortedListOfStatesUsingCsvRows();
+            string[] statesArr = states.Split(',');
+            for (int i = 0; i < statesArr.Length - 2; i++)
+            {
+                Assert.IsTrue(statesArr[i].CompareTo(statesArr[i + 1]) < 0);
+            }
+        }
+    }
+
+    [TestClass]
+    public class PeopleTests
+    {
+        /*    [AssemblyInitialize]
+            public void AssemblyInitialize()
+            {
+                //source = csvrows()
+            }*/
+        [TestMethod]
+        public void People_ReturnsMultiplePersons_Pass()
+        {
+            SampleData testData = new();
+            IEnumerable<IPerson> people = testData.People;
+            foreach (IPerson item in people)
+            {
+                Assert.IsNotNull(item);
+                Assert.AreEqual<Type>(typeof(Person), item.GetType());
+            }
+        }
+        [TestMethod]
+        public void People_Sorted_Pass()
+        {
+            SampleData testData = new();
+            IEnumerable<IPerson> sortedPeople = testData.People;
+            IPerson prev = sortedPeople.First();
+            foreach (IPerson item in sortedPeople)
+            {
+                if (prev != item)
+                {
+                    bool isLess = true;
+                    if (prev.Address.State.CompareTo(item.Address.State) > 0)
                     {
-                        if (prev.Address.Zip.CompareTo(item.Address.Zip) > 0)
+                        if (prev.Address.City.CompareTo(item.Address.City) > 0)
                         {
-                            isLess = false;
+                            if (prev.Address.Zip.CompareTo(item.Address.Zip) > 0)
+                            {
+                                isLess = false;
+                            }
                         }
                     }
+                    Assert.IsTrue(isLess);
                 }
-                Assert.IsTrue(isLess);
+                prev = item;
             }
-            prev = item;
         }
-    }
-    [TestMethod]
-    public void People_AddressesPopulated_Pass()
-    {
-        SampleData testData = new();
-        IEnumerable<IPerson> people = testData.People;
-        foreach (IPerson item in people)
+        [TestMethod]
+        public void People_AddressesPopulated_Pass()
         {
-            Assert.IsNotNull(item.Address);
-            Assert.AreEqual<Type>(typeof(Address), item.Address.GetType());
-        }
-    }
-
-}
-
-[TestClass]
-public class FilterByEmailAddressTests
-{
-/*    [TestInitialize]
-    public void AssemblyInitialize()
-    {
-        //source = people()
-    }*/
-    [TestMethod]
-    public void Filter_ReturnsListThatMatchEmail_Pass()
-    {
-        SampleData testData = new();
-        IEnumerable<(string first, string last)> names = testData.FilterByEmailAddress( email => email.Equals("eloseked@posterous.com"));
-
-        foreach (IPerson item in testData.People)
-        {
-            if (item.EmailAddress.Equals("eloseked@posterous.com"))
+            SampleData testData = new();
+            IEnumerable<IPerson> people = testData.People;
+            foreach (IPerson item in people)
             {
-                Assert.IsTrue(names.Contains((item.FirstName,item.LastName)));
+                Assert.IsNotNull(item.Address);
+                Assert.AreEqual<Type>(typeof(Address), item.Address.GetType());
+            }
+        }
+
+    }
+
+    [TestClass]
+    public class FilterByEmailAddressTests
+    {
+        /*    [TestInitialize]
+            public void AssemblyInitialize()
+            {
+                //source = people()
+            }*/
+        [TestMethod]
+        public void Filter_ReturnsListThatMatchEmail_Pass()
+        {
+            SampleData testData = new();
+            IEnumerable<(string first, string last)> names = testData.FilterByEmailAddress(email => email.Equals("eloseked@posterous.com"));
+
+            foreach (IPerson item in testData.People)
+            {
+                if (item.EmailAddress.Equals("eloseked@posterous.com"))
+                {
+                    Assert.IsTrue(names.Contains((item.FirstName, item.LastName)));
+                }
             }
         }
     }
-}
 
-[TestClass]
-public class GetAggregateListOfStatesGivenPeopleCollectionTests
-{
-/*    [AssemblyInitialize]
-    public void AssemblyInitialize()
+    [TestClass]
+    public class GetAggregateListOfStatesGivenPeopleCollectionTests
     {
-        //source = people()
-    }*/
-    [TestMethod]
-    public void Test()
-    {
-        Assert.IsFalse(true);
+        /*    [AssemblyInitialize]
+            public void AssemblyInitialize()
+            {
+                //source = people()
+            }*/
+        [TestMethod]
+        public void Test()
+        {
+            Assert.IsFalse(true);
+        }
     }
-}
 
-[TestClass]
-public class NodeEnumerableTests
-{
-    [TestMethod]
-    public void IEnumerable_ReturnsAllItemsInCircle_Pass()
+    [TestClass]
+    public class NodeEnumerableTests
     {
-        Assert.IsFalse(true);
+        [TestMethod]
+        public void IEnumerable_ReturnsAllItemsInCircle_Pass()
+        {
+            Assert.IsFalse(true);
+        }
     }
+
+
 }
 
