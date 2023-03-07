@@ -199,9 +199,29 @@ namespace Instruction.Tests
                 //source = people()
             }*/
         [TestMethod]
-        public void Test()
+        public void GetAggregateFromPeople_CommaSeperatedListString_Pass()
         {
-            Assert.IsFalse(true);
+            SampleData testData = new();
+            string states = testData.GetAggregateListOfStatesGivenPeopleCollection(testData.People);
+            string[] statesArr = states.Split(',');
+            for (int i = 0; i < statesArr.Length - 2; i++)
+            {
+                Assert.IsTrue(statesArr[i].CompareTo(statesArr[i + 1]) < 0);
+            }
+        }
+
+        [TestMethod]
+        public void GetAggregateFromPeople_UniqueElements_Pass()
+        {
+            SampleData testData = new();
+            string states = testData.GetAggregateListOfStatesGivenPeopleCollection(testData.People);
+            string[] statesArr = states.Split(',');
+            List<string> unique = new List<string>();
+            foreach (string state in statesArr)
+            {
+                Assert.IsTrue(!(unique.Contains(state)));
+                unique.Add(state);
+            }
         }
     }
 
