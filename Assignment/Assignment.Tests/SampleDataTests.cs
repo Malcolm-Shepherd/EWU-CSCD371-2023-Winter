@@ -42,11 +42,6 @@ namespace Instruction.Tests
                 //source = csvrows()
             }*/
         [TestMethod]
-        public void CsvRowList_ReturnsListOfStates_Pass()
-        {
-            Assert.IsFalse(true);
-        }
-        [TestMethod]
         public void CsvRowList_isUnique_Pass()
         {
             SampleData testData = new();
