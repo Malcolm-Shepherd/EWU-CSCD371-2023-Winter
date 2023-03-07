@@ -237,8 +237,8 @@ namespace Instruction.Tests
             List<Node<int>> nodes = nodeOne.ChildItems(3).ToList();
 
             Assert.IsTrue(nodes.Contains<Node<int>>(nodeOne));
-            Assert.IsTrue(nodes.Contains<Node<int>>(nodeTwo));
-            Assert.IsTrue(nodes.Contains<Node<int>>(nodeThree));
+            Assert.IsTrue(nodes.Contains<Node<int>>(nodeOne.Next));
+            Assert.IsTrue(nodes.Contains<Node<int>>(nodeOne.Next.Next));
         }
     }
 }
