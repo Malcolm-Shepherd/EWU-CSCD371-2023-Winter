@@ -36,11 +36,6 @@ namespace Instruction.Tests
     [TestClass]
     public class GetUniqueSortedListOfStatesGivenCsvRowsTests
     {
-        /*    [TestInitialize]
-            public void AssemblyInitialize()
-            {
-                //source = csvrows()
-            }*/
         [TestMethod]
         public void CsvRowList_isUnique_Pass()
         {
@@ -84,11 +79,6 @@ namespace Instruction.Tests
     [TestClass]
     public class GetAggregateSortedListOfStatesUsingCsvRowsTests
     {
-        /*   [AssemblyInitialize]
-           public void AssemblyInitialize()
-           {
-               //source = getaggregatesortedlistofstatesusingcsvrows()
-           }*/
         [TestMethod]
         public void GetAggregate_CommaSeperatedListString_Pass()
         {
@@ -105,11 +95,6 @@ namespace Instruction.Tests
     [TestClass]
     public class PeopleTests
     {
-        /*    [AssemblyInitialize]
-            public void AssemblyInitialize()
-            {
-                //source = csvrows()
-            }*/
         [TestMethod]
         public void People_ReturnsMultiplePersons_Pass()
         {
@@ -164,11 +149,6 @@ namespace Instruction.Tests
     [TestClass]
     public class FilterByEmailAddressTests
     {
-        /*    [TestInitialize]
-            public void AssemblyInitialize()
-            {
-                //source = people()
-            }*/
         [TestMethod]
         public void Filter_ReturnsListThatMatchEmail_Pass()
         {
@@ -188,11 +168,6 @@ namespace Instruction.Tests
     [TestClass]
     public class GetAggregateListOfStatesGivenPeopleCollectionTests
     {
-        /*    [AssemblyInitialize]
-            public void AssemblyInitialize()
-            {
-                //source = people()
-            }*/
         [TestMethod]
         public void GetAggregateFromPeople_CommaSeperatedListString_Pass()
         {

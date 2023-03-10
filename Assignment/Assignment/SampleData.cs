@@ -15,9 +15,8 @@ namespace Assignment
             {
                 IEnumerable<string> lines =
                     from line in File.ReadLines("People.csv")
-                    where line.Contains('@')
                     select line;
-                return lines;
+                return lines.Skip(1);
             } 
         }
 
