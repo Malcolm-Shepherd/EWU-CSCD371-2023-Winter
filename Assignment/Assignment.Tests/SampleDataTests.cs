@@ -201,10 +201,20 @@ namespace Instruction.Tests
         [TestMethod]
         public void IEnumerable_ReturnsAllItemsInCircle_Pass()
         {
-            Assert.IsFalse(true);
+            Node<int> nodeOne = new Node<int>(10);
+            Node<int> nodeTwo = new Node<int>(20);
+            Node<int> nodeThree = new Node<int>(30);
+
+            nodeOne.Append(nodeTwo);
+            nodeTwo.Append(nodeThree);
+            nodeThree.Append(nodeOne);
+
+            List<Node<int>> nodes = nodeOne.ChildItems(3).ToList();
+
+            Assert.IsTrue(nodes.Contains<Node<int>>(nodeOne));
+            Assert.IsTrue(nodes.Contains<Node<int>>(nodeOne.Next));
+            Assert.IsTrue(nodes.Contains<Node<int>>(nodeOne.Next.Next));
         }
     }
-
-
 }
 
